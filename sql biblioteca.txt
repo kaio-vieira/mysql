@@ -1,0 +1,97 @@
+create database biblioteca;
+use biblioteca;
+
+CREATE TABLE aluno (
+ra int PRIMARY KEY auto_increment,
+nome varchar(100),
+telefone varchar(20),
+turma varchar(20),
+email varchar(50) unique,
+dataNascimento date
+);
+
+CREATE TABLE bibliotecario (
+codFuncionario int PRIMARY KEY auto_increment,
+nome varchar(200),
+email varchar(100),
+dataNascimento date,
+telefone varchar(20),
+celular varchar(20) unique,
+rg varchar(30) unique,
+cpf varchar(30) unique,
+num varchar(10),
+logradouro varchar(50),
+complemento varchar(20),
+bairro varchar(50),
+cidade varchar(15),
+uf varchar(2),
+cep varchar(15),
+rua varchar(15)
+);
+
+CREATE TABLE livro (
+codLivro int PRIMARY KEY auto_increment,
+titulo varchar(50),
+autor varchar(100),
+genero varchar(100),
+editora varchar(100)
+);
+
+CREATE TABLE emprestimo_devolucao (
+data_emprestimo date,
+data_devolucao date,
+codEmprestimo int PRIMARY KEY auto_increment,
+ra int,
+codLivro int,
+codFuncionario int,
+FOREIGN KEY(ra) REFERENCES aluno (ra),
+FOREIGN KEY(codLivro) REFERENCES livro (codlivro),
+FOREIGN KEY(codFuncionario) REFERENCES bibliotecario (codFuncionario)
+);
+
+INSERT INTO aluno (nome, telefone, turma, email, dataNascimento) VALUES
+('kaio vieira', '46453625', '2C', 'kaiovieira2456@gmail.com', '2004-03-01'),
+('kaue jorge', '40028922', '1C', 'kaue66@gmail.com', '2005-06-09'),
+('kauan lucca', '41413698', '3C', 'lucca45@gmail.com', '20003-07-10'),
+('adalberto da silva', '42450245', '2B', 'bertinho98@gmail.com', '2004-12-06'),
+('vitor henrique', '41470365', '2B', 'henrique@gmail.com', '2003-03-01'),
+('ketlin oliveira de jesus', '46499527', '2C', 'ketlin99@gmail.com', '2004-12-25'),
+('heitor souza vieira', '45469527', '1C', 'heitor@gmail.com', '2005-09-10'),
+('mario henrique', '46453685', '3C', 'mariogames@gmail.com', '2002-02-03'),
+('sofya da silva', '43390020', '2A', 'sofya@gmail.com', '2003-11-11'),
+('isabela oliveira da silva', '46009877', '2A', 'isinha@gmail.com', '2004-10-01');
+
+INSERT INTO bibliotecario (nome, email, dataNascimento, telefone, celular, rg, cpf, num, logradouro, complemento, bairro, cidade, uf, cep, rua) VALUES
+('admilson vieira de carvalho', 'carvalho65@gmail.com', '1989-05-19', '45497896', 'NULL', '502.339.450-67', 'NULL', 'NULL', 'NULL', 'NULL','NULL', 'maua', 'sp', 'NULL', 'NULL'),
+('valeria valentina de jesus', 'valentina995@gmail.com', '1980-09-10', '45036980', 'NULL', '332.917.850-70', 'NULL', 'NULL', 'NULL', 'NULL','NULL', 'ribeirao pires', 'sp', 'NULL', 'NULL'),
+('jorge wilson', 'wilson123@gmail.com', '1990-07-15', '45432182', 'NULL', '620.353.320-36', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'santo andre', 'sp', 'NULL', 'NULL');
+
+
+INSERT INTO livro (titulo, autor, genero, editora) VALUES
+('Diário de Anne Frank', 'Anne Frank', 'Autobiografia', 'Record'),
+(' Guerra e Paz', 'Lev Tolstói','romance', 'The Russian Messenger'),
+('Lolita','Vladímir Nabókov','romance','Olympia Press'),
+('As Aventuras de Huckleberry Finn','Mark Twain','romance','SM Edição'),
+('Hamlet','William Shakespeare','drama','L&PM EDITORES'),
+('Anna Kariênina', 'Lev Tolstói','romance', 'The Russian Messenger'),
+('O Grande Gatsby', 'Scott Fitzgerald', 'romance', 'Record'),
+('Em Busca do Tempo Perdido',' Marcel Proust','romance','SM Edição'),
+('As Histórias','Tchekhov','romance','Olympia Press'),
+(' Middlemarch','George Eliot','romance','Record');
+
+INSERT INTO emprestimo_devolucao (data_emprestimo, data_devolucao, ra, codfuncionario, codlivro) VALUES
+('2018-01-03', '2018-05-04', '1', '2','3'),
+('2018-02-03', '2018-06-04', '5', '3','10'),
+('2018-02-03', '2018-06-04', '2', '2','9'),
+('2018-03-09', '2018-07-10', '10', '2','7'),
+('2018-03-11', '2018-06-14', '3', '3','8'),
+('2018-03-15', '2018-06-17', '7', '1','2'),
+('2018-04-10', '2018-08-12', '9', '1','7'),
+('2018-04-20', '2018-08-24', '8', '1','9'),
+('2018-05-28', '2018-07-30', '4', '2','10'),
+('2018-05-30', '2018-08-02', '6', '3','1');
+
+
+
+
+
