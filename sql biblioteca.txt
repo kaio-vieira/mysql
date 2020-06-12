@@ -45,7 +45,7 @@ ra int,
 codLivro int,
 codFuncionario int,
 FOREIGN KEY(ra) REFERENCES aluno (ra),
-FOREIGN KEY(codLivro) REFERENCES livro (codlivro),
+FOREIGN KEY(codLivro) REFERENCES livro (codLivro),
 FOREIGN KEY(codFuncionario) REFERENCES bibliotecario (codFuncionario)
 );
 
@@ -61,13 +61,13 @@ INSERT INTO aluno (nome, telefone, turma, email, dataNascimento) VALUES
 ('sofya da silva', '43390020', '2A', 'sofya@gmail.com', '2003-11-11'),
 ('isabela oliveira da silva', '46009877', '2A', 'isinha@gmail.com', '2004-10-01');
 
-INSERT INTO bibliotecario (nome, email, dataNascimento, telefone, celular, rg, cpf, num, logradouro, complemento, bairro, cidade, uf, cep, rua) VALUES
-('admilson vieira de carvalho', 'carvalho65@gmail.com', '1989-05-19', '45497896', 'NULL', '502.339.450-67', 'NULL', 'NULL', 'NULL', 'NULL','NULL', 'maua', 'sp', 'NULL', 'NULL'),
-('valeria valentina de jesus', 'valentina995@gmail.com', '1980-09-10', '45036980', 'NULL', '332.917.850-70', 'NULL', 'NULL', 'NULL', 'NULL','NULL', 'ribeirao pires', 'sp', 'NULL', 'NULL'),
-('jorge wilson', 'wilson123@gmail.com', '1990-07-15', '45432182', 'NULL', '620.353.320-36', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'santo andre', 'sp', 'NULL', 'NULL');
+INSERT INTO bibliotecario (nome, email, dataNascimento, telefone, rg, cpf, num, logradouro, complemento, bairro, cidade, uf, cep, rua) VALUES
+('admilson vieira de carvalho', 'carvalho65@gmail.com', '1989-05-19', '45497896', '502.339.450-67', 'NULL', 'NULL', 'NULL', 'NULL','NULL', 'maua', 'sp', 'NULL', 'NULL'),
+('valeria valentina de jesus', 'valentina995@gmail.com', '1980-09-10', '45036980',  '332.917.850-70', 'NULL', 'NULL', 'NULL', 'NULL','NULL', 'ribeirao pires', 'sp', 'NULL', 'NULL'),
+('jorge wilson', 'wilson123@gmail.com', '1990-07-15', '45432182', '620.353.320-36', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'santo andre', 'sp', 'NULL', 'NULL');
 
 
-INSERT INTO livro (titulo, autor, genero, editora) VALUES
+INSERT INTO Livro (titulo, autor, genero, editora) VALUES
 ('Diário de Anne Frank', 'Anne Frank', 'Autobiografia', 'Record'),
 (' Guerra e Paz', 'Lev Tolstói','romance', 'The Russian Messenger'),
 ('Lolita','Vladímir Nabókov','romance','Olympia Press'),
@@ -79,7 +79,7 @@ INSERT INTO livro (titulo, autor, genero, editora) VALUES
 ('As Histórias','Tchekhov','romance','Olympia Press'),
 (' Middlemarch','George Eliot','romance','Record');
 
-INSERT INTO emprestimo_devolucao (data_emprestimo, data_devolucao, ra, codfuncionario, codlivro) VALUES
+INSERT INTO emprestimo_devolucao (data_emprestimo, data_devolucao, ra, codFuncionario, codLivro) VALUES
 ('2018-01-03', '2018-05-04', '1', '2','3'),
 ('2018-02-03', '2018-06-04', '5', '3','10'),
 ('2018-02-03', '2018-06-04', '2', '2','9'),
@@ -91,6 +91,20 @@ INSERT INTO emprestimo_devolucao (data_emprestimo, data_devolucao, ra, codfuncio
 ('2018-05-28', '2018-07-30', '4', '2','10'),
 ('2018-05-30', '2018-08-02', '6', '3','1');
 
+ALTER TABLE bibliotecario DROP COLUMN rua;
+ALTER TABLE Livro ADD COLUMN paginas int;'	
+ALTER TABLE Livro ADD COLUMN qtdeExemplares
+
+UPDATE livro SET paginas=200, qtdeExemplares= 10 WHERE codLivro 1;
+UPDATE livro SET paginas=200, qtdeExemplares= 2 WHERE codLivro 2;
+UPDATE livro SET paginas=200, qtdeExemplares= 3 WHERE codLivro 3;
+UPDATE livro SET paginas=200, qtdeExemplares= 9 WHERE codLivro 4;
+UPDATE livro SET paginas=200, qtdeExemplares= 4 WHERE codLivro 5;
+UPDATE livro SET paginas=200, qtdeExemplares= 15 WHERE codLivro 6;
+UPDATE livro SET paginas=200, qtdeExemplares= 18 WHERE codLivro 7;
+UPDATE livro SET paginas=200, qtdeExemplares= 13 WHERE codLivro 8;
+UPDATE livro SET paginas=200, qtdeExemplares= 10 WHERE codLivro 9;
+UPDATE livro SET paginas=200, qtdeExemplares= 1 WHERE codLivro 10;
 
 
 
